@@ -1,6 +1,6 @@
 # Blue Sheet Automation Project
 
-### First of all, I would suggest you to setup a virtual environment(to setup virtual environment you can use "Conda"(Documentation="https://conda.io/docs/user-guide/tasks/manage-environments.html") and then do the below instructions:-
+### First of all, I suggest you to setup(optional) a virtual environment(to setup virtual environment you can use "Conda", Documentation="https://conda.io/docs/user-guide/tasks/manage-environments.html") and after activating your environment follow the below instructions:-
 
 
 1.  install python 3.6.4 (https://www.python.org/downloads/release/python-364/)

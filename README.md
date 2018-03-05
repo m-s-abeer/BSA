@@ -1,7 +1,7 @@
 # Blue Sheet Automation Project
 
-# first of all, I would suggest you to setup a virtual environment and then do the below instructions:-
-# to setup virtual environment you can use "Conda"(Documentation="https://conda.io/docs/user-guide/tasks/manage-environments.html").
+## first of all, I would suggest you to setup a virtual environment and then do the below instructions:-
+## to setup virtual environment you can use "Conda"(Documentation="https://conda.io/docs/user-guide/tasks/manage-environments.html").
 
 1.  install python 3.6.4 (https://www.python.org/downloads/release/python-364/)
 2.  install django 2.0.2 (write 'pip install Django==2.0.2' in cmd)

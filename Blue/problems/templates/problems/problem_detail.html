@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Problem Detail</title>
+{% endblock %}
+
+{% block body_block %}
+  <h1>{{problem}}</h1>
+  <ul>
+    <li> <h3><b>Online Judge:</b> {{problem.oj_name}}</h3> </li>
+    <li> <h3><b>Problem ID:</b> {{problem.prob_id}}</h3> </li>
+    <li> <h3><b>Category:</b> {{problem.category}}</h3> </li>
+    <li> <h3><b>Problem Link:</b> <a href="{{problem.link}}">{{problem.oj_name}} {{problem.prob_id}}</h3> </li>
+  </ul>
+{% endblock %}

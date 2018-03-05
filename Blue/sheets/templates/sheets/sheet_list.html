@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %} <title>Sheet list</title> {% endblock %}
+
+{% block body_block %}
+<h1>Sheets list</h1>
+<br>
+  {% if sheets_list %}
+    {% for sheet in sheets_list %}
+      <h2>Sheet: {{sheet}}</h1>
+      <h3>Members: {{sheet.memberships.count}}</h3>
+      {% for member in sheet.members.all %}
+        <p>{{member}}</p>
+      {% endfor %}
+    {% endfor %}
+  {% else %}
+    <h3>Sorry! No sheets available.</h3>
+  {% endif %}
+
+{% endblock %}

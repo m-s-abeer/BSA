@@ -3,7 +3,7 @@
 ### First of all, I suggest you to setup(optional) a virtual environment(to setup virtual environment you can use "Conda", Documentation="https://conda.io/docs/user-guide/tasks/manage-environments.html") and after activating your environment follow the below instructions:-
 
 
-1.  install python 3.6.4 (https://www.python.org/downloads/release/python-364/)
+1.  install python 3.6.4 (through the environment or https://www.python.org/downloads/release/python-364/ if you haven't setup a custom environment)
 2.  install django 2.0.2 (write 'pip install Django==2.0.2' in cmd)
 3.  install django-bootstrap4 (write 'pip install django-bootstrap4' in cmd)
 4.  install postgreSQL 10.x (https://www.enterprisedb.com/downloads/postgres-postgresql-downloads)

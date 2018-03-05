@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% block title %}
+    <title>Base</title>
+    {% endblock %}
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">MSA</a>
+        <ul class="nav navbar-nav navbar-right">
+
+          {# Django Home Link / Admin Link / Register Link#}
+          <li><a class="navbar-link" href="{% url 'problems:archive' %}">Problem Archive</a></li>
+          <li><a class="navbar-link" href="{% url 'sheets:home' %}">Sheets</a></li>
+          <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
+
+          {# Some logic on what to display for last item#}
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'profiles:logout' %}">Logout</a></li>
+          {% else %}
+            <li><a class="navbar-link" href="{% url 'profiles:register' %}">Register</a></li>
+            <li><a class="navbar-link" href="{% url 'profiles:login' %}">Login</a></li>
+          {% endif %}
+
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+
+    {% block body_block %}
+
+    {% endblock %}
+
+    </div>
+
+
+  </body>
+</html>

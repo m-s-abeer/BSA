@@ -8,7 +8,7 @@
 2.  install django 2.0.2 (write 'pip install Django==2.0.2' in cmd)
 3.  install django-bootstrap4 (write 'pip install django-bootstrap4' in cmd)
 4.  install postgreSQL 10.x (https://www.enterprisedb.com/downloads/postgres-postgresql-downloads)
-5.  install psycopg2 (write 'pip install psycopg2' in command-prompt)
+5.  install psycopg2 (write 'pip install psycopg2' or 'pip install psycopg2-binary' if the first one doesn't work in cmd)
 6.  change directory to the project folder (i.e. Blue/)
 7.  create database (open pgmyAdmin 4 and create a new database with any name)
 8.  connect database (open "Blue/Blue/settings.py" and change the 'Databases:name' and 'Databases:password' fields accordingly)

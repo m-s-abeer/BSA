@@ -1,4 +1,5 @@
 # Blue Sheet Automation Project
+##Installation instructions
 
 ### First of all, I suggest you to setup(optional) a virtual environment(to setup virtual environment you can use "Conda", Documentation="https://conda.io/docs/user-guide/tasks/manage-environments.html") and after activating your environment follow the below instructions:-
 

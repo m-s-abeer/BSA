@@ -7,8 +7,12 @@
 {% block body_block %}
   <h1>Problem Archive</h1>
   <ol>
-    {% for problem in all_problems %}
-    <h3><li><a href="{% url 'problems:problem_detail' slug=problem.slug %}">{{ problem }}</a></li></h3>
-    {% endfor %}
+    {% if all_problems %}
+      {% for problem in all_problems %}
+      <h3><li><a href="{% url 'problems:problem_detail' slug=problem.slug %}">{{ problem }}</a></li></h3>
+      {% endfor %}
+    {% else %}
+      <h3>No problems added yet</h3>
+    {% endif %}
   </ol>
 {% endblock %}

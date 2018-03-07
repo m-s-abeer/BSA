@@ -1,7 +1,11 @@
 from django.db import models
+from django.apps import apps
 from django.utils.text import slugify
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
+
+from django.contrib.auth import get_user_model
+User = get_user_model()
 # Create your models here.
 
 class Problem(models.Model):

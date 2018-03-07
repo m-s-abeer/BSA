@@ -28,9 +28,20 @@ class Sheet(models.Model):
 class SheetMember(models.Model):
     sheet = models.ForeignKey(Sheet, on_delete=models.CASCADE, related_name='memberships')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_sheet')
+    solve_count = models.PositiveIntegerField(editable=False, null=True)
+
+    #check if eligible and raise error if not
+    # def clean(self, *args, **kwargs):
+    #     #check if eligible and raise error if not
+    #     super().clean(*args, **kwargs)
+    #
+    # def save(self, *args, **kwargs):
+    #     self.full_clean()
+    #     super().save(*args, **kwargs)
 
     def __str__(self):
         return self.user.username
+
     class Meta:
         unique_together = ['sheet', 'user']
 

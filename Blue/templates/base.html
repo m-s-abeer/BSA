@@ -17,13 +17,17 @@
         <ul class="nav navbar-nav navbar-right">
 
           {# Django Home Link / Admin Link / Register Link#}
+
+          {% if user.is_authenticated %}
+          <li><a class="navbar-link" href="#">{{user}}</a></li>
+          {% endif %}
           <li><a class="navbar-link" href="{% url 'problems:archive' %}">Problem Archive</a></li>
           <li><a class="navbar-link" href="{% url 'sheets:home' %}">Sheets</a></li>
           <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
 
           {# Some logic on what to display for last item#}
           {% if user.is_authenticated %}
-            <li><a href="{% url 'profiles:logout' %}">Logout</a></li>
+            <li><a class="navbar-link" href="{% url 'profiles:logout' %}">Logout</a></li>
           {% else %}
             <li><a class="navbar-link" href="{% url 'profiles:register' %}">Register</a></li>
             <li><a class="navbar-link" href="{% url 'profiles:login' %}">Login</a></li>

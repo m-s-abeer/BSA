@@ -1,15 +1,25 @@
 {% extends "base.html" %}
 
-{% block title %}
-  <title>Problem Detail</title>
-{% endblock %}
+{% block title %}Problem Detail{% endblock %}
 
 {% block body_block %}
   <h1>{{problem}}</h1>
+  {% if user.is_authenticated %}
+  <h4><b>Solve Status:</b> {% if solve_status %}Solved{% else %}Pending. Solved yet? <a href="solve">Yes</a> {% endif %}</h4>
+  {% else %}
+  <h4><b>Solve Status:</b> You are not logged in!</h4>
+  {% endif %}
   <ul>
-    <li> <h3><b>Online Judge:</b> {{problem.oj_name}}</h3> </li>
-    <li> <h3><b>Problem ID:</b> {{problem.prob_id}}</h3> </li>
-    <li> <h3><b>Category:</b> {{problem.category}}</h3> </li>
-    <li> <h3><b>Problem Link:</b> <a href="{{problem.link}}">{{problem.oj_name}} {{problem.prob_id}}</h3> </li>
+    <h3><b>Online Judge:</b> {{problem.oj_name}}</h3>
+    <h3><b>Problem ID:</b> {{problem.prob_id}}</h3>
+    <h3><b>Category:</b> {{problem.category}}</h3>
+    <h3><b>Note:</b> {% if problem.note %}{{problem.note}}{% else %}No notes added yet{% endif %}</h3>
+    <h3><b>Problem Link:</b> <a href="{{problem.link}}">{{problem.oj_name}} {{problem.prob_id}}</a></h3>
+    <h3><b>Solved by:</b> {{problem.solved.count}} users</h3>
+    <ul>
+      {% for users in problem.solved.all %}
+        <li>{{users.solver}}</li>
+      {% endfor %}
+    </ul>
   </ul>
 {% endblock %}

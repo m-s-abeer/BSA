@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Confirm solve{% endblock %}
+
+{% block body_block %}
+  {% if solve_status %}
+  <h1> You've already solved this problem</h1>
+  {% else %}
+  <h1> Are you sure you've solved <b>"{{prob}}"</b>?</h1>
+  <h3> You cannot remove this problem from your solve activities after confirmation.</h3>
+  <form method="POST">
+    {% csrf_token %}
+    <input type="submit" name="confirm" value="Confirm">
+    <button type="button" name="cancel"><a href="{% url 'problems:problem_detail' slug=prob.slug %}">Cancel</a></button>
+  </form>
+  {% endif %}
+{% endblock %}

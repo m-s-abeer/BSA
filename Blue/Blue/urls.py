@@ -23,5 +23,6 @@ urlpatterns = [
     path('sheets/', include('sheets.urls', namespace='sheets')),
     path('profiles/', include('django.contrib.auth.urls')),
     path('problems/', include('problems.urls', namespace='problems')),
+    path('solve_activities/', include('solve_activities.urls', namespace='solve_activities')),
     path('admin/', admin.site.urls),
 ]

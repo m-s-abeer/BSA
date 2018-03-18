@@ -1,13 +1,17 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
-{% block title %} <title>Login</title> {% endblock %}
+{% block title %}Login{% endblock %}
 
 {% block body_block %}
-  <form method="POST">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    {% buttons %}
-      <button type="submit" class="btn btn-primary" name="login">Login</button>
-    {% endbuttons %}
-  </form>
+  {% if user.is_authenticated %}
+    <h1>You're already logged in!</h1>
+  {% else %}
+    <form method="POST">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      {% buttons %}
+        <button type="submit" class="btn btn-primary" name="login">Login</button>
+      {% endbuttons %}
+    </form>
+  {% endif %}
 {% endblock %}

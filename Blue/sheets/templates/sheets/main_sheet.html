@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}{{this_sheet}}{% endblock%}
+
+{% block body_block %}
+  <h1>{{this_sheet}}</h1>
+  <h2>Total problems added: {{this_sheet.problem_count}}</h2>
+  <h3>Current cut off: {{this_sheet.cut_off}}</h3>
+  <h4>Members</h4>
+  {% for member in member_list %}
+    <p>{{member}}</p>
+  {% endfor %}
+
+  {% for prob in sheet_prob %}
+    <p>{{prob}}</p>
+  {% endfor %}
+{% endblock %}

@@ -1,7 +1,11 @@
 from django.db import models
+from django.apps import apps
 from django.utils.text import slugify
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
+
+from django.contrib.auth import get_user_model
+User = get_user_model()
 # Create your models here.
 
 class Problem(models.Model):
@@ -12,6 +16,10 @@ class Problem(models.Model):
     category = models.CharField(max_length = 100, blank=True)
     note = models.TextField(max_length=100, blank=True)
     link = models.URLField(max_length = 1000)
+    created_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['created_at']
 
     def __str__(self):
         return self.oj_name + ' - ' + self.prob_id + ' : ' + self.name
@@ -28,5 +36,6 @@ class Problem(models.Model):
         super().save(*args, **kwargs)
 
     def get_absoulte_url(self):
-        return reverse('problems')
+        # return reverse('problems')
         return reverse('problems:problem_detail', kwargs={'slug':self.slug})
+        return reverse('problems:problem_solved', kwargs={'slug':self.slug})

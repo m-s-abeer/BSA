@@ -17,7 +17,7 @@ class Sheet(models.Model):
         return self.name + " ( " + self.semester + ", " + str(self.year) + " )"
 
     def get_absolute_url(self):
-        # return reverse('sheets:single', kwargs={'slug': self.slug})
+        return reverse('sheets:activity', kwargs={'slug': self.slug})
         return reverse('home')
 
     # incomplete
@@ -28,9 +28,20 @@ class Sheet(models.Model):
 class SheetMember(models.Model):
     sheet = models.ForeignKey(Sheet, on_delete=models.CASCADE, related_name='memberships')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_sheet')
+    solve_count = models.PositiveIntegerField(default=0)
+
+    #check if eligible and raise error if not
+    # def clean(self, *args, **kwargs):
+    #     #check if eligible and raise error if not
+    #     super().clean(*args, **kwargs)
+    #
+    # def save(self, *args, **kwargs):
+    #     self.full_clean()
+    #     super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.user.username
+        return self.user.username + ": " + self.sheet.name
+
     class Meta:
         unique_together = ['sheet', 'user']
 

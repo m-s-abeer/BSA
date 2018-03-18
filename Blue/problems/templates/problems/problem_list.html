@@ -1,14 +1,16 @@
 {% extends "base.html" %}
-
-{% block title %}
-  <title>Problems Archive</title>
-{% endblock %}
+{% load extra_tags %}
+{% block title %}Problems Archive{% endblock %}
 
 {% block body_block %}
   <h1>Problem Archive</h1>
   <ol>
-    {% for problem in all_problems %}
-    <h3><li><a href="{% url 'problems:problem_detail' slug=problem.slug %}">{{ problem }}</a></li></h3>
-    {% endfor %}
+      {% for problem in all_problems %}
+      <h3><li><a href="{% url 'problems:problem_detail' slug=problem.slug %}">{{ problem }}</a>
+        {% is_solved_by_user problem user as result %}
+        {% if result %}Solved{% endif %}</li></h3>
+      {% empty %}
+      <h3>No problems added yet</h3>
+      {% endfor %}
   </ol>
 {% endblock %}

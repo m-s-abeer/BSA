@@ -22,10 +22,13 @@ class SolveConfirmation(LoginRequiredMixin, generic.TemplateView):
     def post(self, request, *args, **kwargs):
         problem = get_object_or_404(Problem, slug=kwargs['slug'])
         Solve.objects.create(problem=problem, solver=request.user)
-        sheet_mem=SheetMember.objects.filter(user=request.user)[0]
+        sheet_mem=SheetMember.objects.filter(user=request.user)
         ## If the user is a member of any sheet, it'll update the solve count of him in that sheet
         if sheet_mem:
-            sheet_mem.solve_count = sheet_mem.solve_count + 1
-            sheet_mem.save()
+            sheet_mem=sheet_mem[0]
+            isPos = problem in Problem.objects.order_by("created_at")[0:sheet_mem.sheet.problem_count]
+            if isPos:
+                sheet_mem.solve_count = sheet_mem.solve_count + 1
+                sheet_mem.save()
         success_msg="<h1><b>Congratulations! You've solved \"" + str(problem) + "\".</b></h1>"
         return HttpResponse(success_msg)

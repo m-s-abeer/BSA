@@ -1,5 +1,5 @@
 from django.db import models
-from problems.models import Problem
+# from problems.models import Problem
 
 # from django.apps import apps
 
@@ -8,7 +8,7 @@ User = get_user_model()
 # Create your models here.
 
 class Solve(models.Model):
-    problem = models.ForeignKey(Problem, on_delete=models.CASCADE, related_name="solved")
+    problem = models.ForeignKey('problems.Problem', on_delete=models.CASCADE, related_name="solved")
     solver = models.ForeignKey(User, on_delete=models.CASCADE, related_name="solved")
     solved_at = models.DateTimeField(auto_now=True)
 

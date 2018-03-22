@@ -1,16 +1,50 @@
 {% extends "base.html" %}
+{% load extra_tags %}
 {% block title %}{{this_sheet}}{% endblock%}
 
 {% block body_block %}
-  <h1>{{this_sheet}}</h1>
+  <h1>{{this_sheet}} {% if not sheet_status %}Join this sheet{% endif %} </h1>
   <h2>Total problems added: {{this_sheet.problem_count}}</h2>
   <h3>Current cut off: {{this_sheet.cut_off}}</h3>
-  <h4>Members</h4>
-  {% for member in member_list %}
-    <p>{{member}}</p>
-  {% endfor %}
 
-  {% for prob in sheet_prob %}
-    <p>{{prob}}</p>
-  {% endfor %}
+  <br>
+
+  <table style="width:100%" border="1">
+    {# Printing usernames #}
+    <tr>
+      <th>Users</th>
+      {% for member in member_list %}
+        <th>{{member.user.username}}</th>
+      {% endfor %}
+    </tr>
+    {# Printing Solve Counts #}
+    <tr>
+      <th>Solve Count</th>
+      {% for member in member_list %}
+        <td>{{member.solve_count}}</td>
+      {% endfor %}
+    {# incomplete #}
+    {# <tr> #}
+      {# <th>Solve percentage</th> #}
+      {# {% for member in member_list %} #}
+        {# <td>{{member.solve_count}}</td> #}
+      {# {% endfor %} #}
+    {# </tr> #}
+
+    {# Printing problems on first column and solves of sheetmembers on the next columns #}
+    </tr>
+    {% for prob in sheet_prob %}
+      <tr>
+        {# Problem with link #}
+        <th><a href="{% url 'problems:problem_detail' slug=prob.slug %}">{{prob}}</a></th>
+        {# Solve for each member(ordered by descending solve_count) #}
+        {% for member in member_list %}
+          {% is_solved_by_user prob member.user as result %}
+          <td>{% if result %}OK{% endif %}</td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </table>
+
+
 {% endblock %}

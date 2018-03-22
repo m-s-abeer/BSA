@@ -14,7 +14,7 @@
     <h3><b>Problem ID:</b> {{problem.prob_id}}</h3>
     <h3><b>Category:</b> {{problem.category}}</h3>
     <h3><b>Note:</b> {% if problem.note %}{{problem.note}}{% else %}No notes added yet{% endif %}</h3>
-    <h3><b>Problem Link:</b> <a href="{{problem.link}}">{{problem.oj_name}} {{problem.prob_id}}</a></h3>
+    <h3><b>Problem Link:</b> <a href="{{problem.link}}" target="_blank">{{problem.oj_name}} {{problem.prob_id}}</a></h3>
     <h3><b>Solved by:</b> {{problem.solved.count}} users</h3>
     <ul>
       {% for users in problem.solved.all %}

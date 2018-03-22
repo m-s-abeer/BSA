@@ -11,9 +11,7 @@
       <h3>Total problems added: {{sheet.problem_count}}</h3>
       <h3>Cut-off: {{sheet.cut_off}}</h3>
       <h4>Members: {{sheet.memberships.count}}</h4>
-      {% for member in sheet.members.all %}
-        <p>{{member}}</p>
-      {% endfor %}
+      {% for member in sheet.members.all %}{% if not forloop.first %}, {% endif %}{{member}}{% endfor %}
     {% endfor %}
 
   {% else %}

@@ -7,8 +7,8 @@
   <ol>
       {% for problem in all_problems %}
       <h3><li><a href="{% url 'problems:problem_detail' slug=problem.slug %}">{{ problem }}</a>
-        {% is_solved_by_user problem user as result %}
-        {% if result %}Solved{% endif %}</li></h3>
+        {% if user.is_authenticated %}{% is_solved_by_user problem user as result %}
+        {% if result %}Solved{% endif %}{% endif %}</li></h3>
       {% empty %}
       <h3>No problems added yet</h3>
       {% endfor %}

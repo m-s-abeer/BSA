@@ -15,11 +15,9 @@ class SheetView(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        print("Yo nigga!")
-        context['this_sheet']=get_object_or_404(Sheet, slug=kwargs['slug'])
-        lim=context['this_sheet'].problem_count
-        print(lim)
-        context['sheet_prob']=Problem.objects.order_by("created_at")[0:lim]
-        context['member_list']=context['this_sheet'].memberships.order_by("solve_count")
-        # context["solve_status"] = self.request.user.is_authenticated and context["prob"].solved.filter(solver=self.request.user).exists()
+        context['this_sheet'] = get_object_or_404(Sheet, slug=kwargs['slug'])
+        lim = context['this_sheet'].problem_count
+        context['sheet_prob'] = Problem.objects.order_by("created_at")[0:lim]
+        context['sheet_status'] = self.request.user.is_authenticated and SheetMember.objects.filter(user=self.request.user).exists()
+        context['member_list'] = context['this_sheet'].memberships.order_by("-solve_count")
         return context

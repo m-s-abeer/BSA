@@ -37,11 +37,11 @@
                   <a class="nav-item nav-link active" href="{% url 'home' %}"><i class="fas fa-user-circle"></i> {{user}}<span class="sr-only">(current)</span></a>
               {% endif %}
 
-              <a class="nav-item nav-link" href="{% url 'problems:archive' %}"><i class="fas fa-book"></i> Problem Archive</a>
+              <a class="nav-item nav-link" href="{% url 'problems:archive' %}"> Problem Archive</a>
 
-              <a class="nav-item nav-link" href="{% url 'sheets:home' %}"> <i class="fa fa-align-justify nav-icon"></i></i> Sheets</a>
+              <a class="nav-item nav-link" href="{% url 'sheets:home' %}"> Sheets</a>
 
-              <a class="nav-item nav-link" href="{% url 'admin:index' %}"><i class="fas fa-chess-king"></i> Admin</a>
+              <a class="nav-item nav-link" href="{% url 'admin:index' %}"> Admin</a>
 
               {# Some logic on what to display for last item #}
               {% if user.is_authenticated %}

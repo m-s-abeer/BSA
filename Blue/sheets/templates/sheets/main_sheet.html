@@ -32,11 +32,21 @@
 				<th>Problems</th>
 	      <th>Solve Count</th>
 				{% for member in member_list %}
-				<td>{{member.solve_count}}</td>
+				<th>{{member.solve_count}}</td>
 				{% endfor %}
 
 				{# Printing problems on first column and solves of sheetmembers on the next columns #}
 			</tr>
+			{# Printing solve percentage #}
+			<tr>
+				<th>Percentage</th>
+	      <th>%</th>
+				{% for member in member_list %}
+				{% solve_percentage solve_count=member.solve_count problems_added=this_sheet.problems_added as per %}
+				<th>{{per}}</td>
+				{% endfor %}
+			</tr>
+
 			{% for prob in sheet_prob %}
 			<tr>
 				{# Problem with link #}

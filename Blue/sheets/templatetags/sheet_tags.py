@@ -14,3 +14,9 @@ def count_problem_solves(problem, members):
         if problem.solved.filter(solver=mem.member).exists() == 1:
             cnt = cnt + 1
     return cnt
+
+@register.simple_tag
+def solve_percentage(solve_count, problems_added):
+    per = solve_count / problems_added
+    per = int((per * 10000) + 0.5) / 100.0
+    return per

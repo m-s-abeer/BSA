@@ -1,20 +1,61 @@
 {% extends "base.html" %}
 
-{% block title %} <title>Sheet list</title> {% endblock %}
+{% block title %}Sheet list{% endblock %}
 
 {% block body_block %}
-<h1>Sheets list</h1>
-<br>
-  {% if sheets_list %}
-    {% for sheet in sheets_list %}
-      <h2>Sheet: {{sheet}}</h1>
-      <h3>Members: {{sheet.memberships.count}}</h3>
-      {% for member in sheet.members.all %}
-        <p>{{member}}</p>
-      {% endfor %}
-    {% endfor %}
-  {% else %}
-    <h3>Sorry! No sheets available.</h3>
-  {% endif %}
+
+<div class="row profile-margin">
+	<div class="col-md-12">
+		<ul class="list-group">
+
+
+
+			<!--=Sheets list section heading start -->
+			<a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+				<div class="d-flex w-100 justify-content-between">
+					<h2 class="mb-1">Sheets list</h2>
+				</div>
+			</a>
+			<!--=Sheets list heading end -->
+
+
+			{% if sheets_list %}
+			{% for sheet in sheets_list %}
+
+			<!--=Sheets list ITEM  START-->
+			<a href="{% url 'sheets:main_sheet' slug=sheet.slug %}" class="list-group-item list-group-item-action flex-column align-items-start">
+
+
+				<div class="d-flex w-100 justify-content-between">
+					<h4 class="mb-1">{{forloop.counter}}. {{sheet}}</h4>
+				</div>
+
+
+				<p class="mb-1">Total problems added: {{sheet.problem_count}}</p>
+				<p class="mb-1">Cut-off: {{sheet.cut_off}}</p>
+				<p class="mb-1">Members: {{sheet.memberships.count}}</p>
+
+
+				{# PRINTING MEMBERS IN SHEET #}
+				<small>Members:</small>
+				{% for member in sheet.members.all %}
+				<small class="text-muted">{{member}}</small>{% if not forloop.last %}, {% endif %}
+        {% empty %}
+        <small class="text-muted">No members added yet!</small>
+				{% endfor %}
+
+			</a>
+			<!--=Sheets list ITEM END-->
+
+			{% endfor %}
+
+			{% else %}
+			<h1>Sorry! No sheets available.</h1>
+			{% endif %}
+
+
+		</ul>
+	</div>
+</div>
 
 {% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Confirm Join{% endblock %}
+
+{% block body_block %}
+  {% if member_status %}
+    <h1> You've already joined a sheet</h1>
+  {% elif not eligible %}
+    <h1>You've solved {{solve_count}} problems in this sheet.</h1>
+    <h3>You're not eligible according to the added problems of this sheet.</h3>
+  {% else %}
+    <h1>You've solved {{solve_count}} problems in this sheet.</h1>
+    <h3> Do you really want to join <b>"{{this_sheet}}"</b>?</h3>
+    <h3> You cannot leave the sheet after joining until you are removed automatically.</h3>
+  <form method="POST">
+    {% csrf_token %}
+    <input type="submit" name="confirm" value="Confirm">
+    <button type="button" name="cancel"><a href="{% url 'sheets:main_sheet' slug=this_sheet.slug %}">Cancel</a></button>
+  </form>
+  {% endif %}
+{% endblock %}

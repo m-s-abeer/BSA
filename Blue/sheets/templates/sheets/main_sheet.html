@@ -9,7 +9,11 @@
 
 		<h1>{{this_sheet}}
 			{% if not sheet_status %}
+<<<<<<< HEAD
 			<br><a href="https://youtu.be/9bZkp7q19f0?t=9" class="btn btn-success" >Join this sheet</a>
+=======
+			<br><a href="{% url 'sheets:join_sheet' slug=this_sheet.slug %}" class="btn btn-success" >Join this sheet</a>
+>>>>>>> Abeer's-branch
 			{% endif %}
 		</h1>
 

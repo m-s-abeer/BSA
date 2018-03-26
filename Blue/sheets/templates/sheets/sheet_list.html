@@ -23,7 +23,11 @@
 			{% for sheet in sheets_list %}
 
 			<!--=Sheets list ITEM  START-->
+<<<<<<< HEAD
 			<a href="{% url 'sheets:activity' slug=sheet.slug %}" class="list-group-item list-group-item-action flex-column align-items-start">
+=======
+			<a href="{% url 'sheets:main_sheet' slug=sheet.slug %}" class="list-group-item list-group-item-action flex-column align-items-start">
+>>>>>>> Abeer's-branch
 
 
 				<div class="d-flex w-100 justify-content-between">
@@ -39,7 +43,11 @@
 				{# PRINTING MEMBERS IN SHEET #}
 				<small>Members:</small>
 				{% for member in sheet.members.all %}
+<<<<<<< HEAD
 				<small class="text-muted">{{member}}</small>
+=======
+				<small class="text-muted">{{member}}</small>{% if not forloop.last %}, {% endif %}
+>>>>>>> Abeer's-branch
         {% empty %}
         <small class="text-muted">No members added yet!</small>
 				{% endfor %}

@@ -9,11 +9,7 @@
 
 		<h1>{{this_sheet}}
 			{% if not sheet_status %}
-<<<<<<< HEAD
-			<br><a href="https://youtu.be/9bZkp7q19f0?t=9" class="btn btn-success" >Join this sheet</a>
-=======
 			<br><a href="{% url 'sheets:join_sheet' slug=this_sheet.slug %}" class="btn btn-success" >Join this sheet</a>
->>>>>>> Abeer's-branch
 			{% endif %}
 		</h1>
 
@@ -27,8 +23,8 @@
 			<tr>
 				<th>Users</th>
 	      <th></th>
-				{% for member in member_list %}
-				<th>{{member.user.username}}</th>
+				{% for sheet_member in member_list %}
+				<th>{{sheet_member.member}}</th>
 				{% endfor %}
 			</tr>
 			{# Printing Solve Counts #}
@@ -38,13 +34,6 @@
 				{% for member in member_list %}
 				<td>{{member.solve_count}}</td>
 				{% endfor %}
-				{# incomplete #}
-				{# <tr> #}
-					{# <th>Solve percentage</th> #}
-					{# {% for member in member_list %} #}
-					{# <td>{{member.solve_count}}</td> #}
-					{# {% endfor %} #}
-				{# </tr> #}
 
 				{# Printing problems on first column and solves of sheetmembers on the next columns #}
 			</tr>
@@ -55,8 +44,8 @@
 				{% count_problem_solves problem=prob members=member_list as problem_solved_count %}
 				<th>{{problem_solved_count}}</th>
 				{# Solve for each member(ordered by descending solve_count) #}
-				{% for member in member_list %}
-				{% is_solved_by_user prob member.user as result %}
+				{% for sheet_member in member_list %}
+				{% is_solved_by_user prob sheet_member.member as result %}
 				<td>{% if result %}OK{% endif %}</td>
 				{% endfor %}
 			</tr>

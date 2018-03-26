@@ -26,7 +26,7 @@ class SolveConfirmation(LoginRequiredMixin, generic.TemplateView):
         ## If the user is a member of any sheet, it'll update the solve count of him in that sheet
         if sheet_mem:
             sheet_mem=sheet_mem[0]
-            isPos = problem in Problem.objects.order_by("created_at")[0:sheet_mem.sheet.problem_count]
+            isPos = problem in Problem.objects.order_by("created_at")[0:sheet_mem.sheet.problems_added]
             if isPos:
                 sheet_mem.solve_count = sheet_mem.solve_count + 1
                 sheet_mem.save()

@@ -1,31 +1,332 @@
-/* Remove the navbar's default margin-bottom and rounded borders */
-.navbar {
-  margin-bottom: 0;
-  border-radius: 0;
+.logged-out-view {
+  background: url("../img/blue_background.png");
+  background-repeat:   no-repeat;
+  background-position: center center;
 }
 
-/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-.row.content {height: 450px}
+.white-text {
+  color: white;
+}
 
-/* Set gray background color and 100% height */
-.sidenav {
-  padding-top: 20px;
-  background-color: #f1f1f1;
+.navbar-nav{
+  margin-left: 320px;
+}
+
+ul li{
+  list-style:none;
+}
+
+
+
+/*---------------------------------------------------------------------------=Login Page=-------------------------------------------------*/
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.login-page {
+  width: 360px;
+  padding: 2% 0 0;
+  margin: auto;
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+label{
+  display: none;
+}
+
+#button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #0019fc;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+#button:hover,#button:active,#button:focus {
+  background: #0032d8;
+}
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.form .message a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+.form small{
+  text-align: left;
+}
+
+.form ul{
+  text-align: left;
+  padding-left: 0;
+}
+
+.container .info {
+  margin: 50px auto;
+  text-align: center;
+}
+.container .info h1 {
+  margin: 0 0 15px;
+  padding: 0;
+  font-size: 36px;
+  font-weight: 300;
+  color: #1a1a1a;
+}
+.container .info span {
+  color: #4d4d4d;
+  font-size: 12px;
+}
+.container .info span a {
+  color: #000000;
+  text-decoration: none;
+}
+.container .info span .fa {
+  color: #EF3B3A;
+}
+body { 
+  background: #05d1ff; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #05d1ff, #2eb9e8);
+  background: -moz-linear-gradient(right, #05d1ff, #2eb9e8);
+  background: -o-linear-gradient(right, #05d1ff, #2eb9e8);
+  background: linear-gradient(to left, #05d1ff, #2eb9e8);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;      
+}
+
+#sidebar ul{
+  color: white;
+  display: block;
+  list-style: none;
+  background: red;
+  width: 370px;
   height: 100%;
 }
 
-/* Set black background color, white text and some padding */
-footer {
-  background-color: #555;
-  color: white;
-  padding: 15px;
+/********************************Profile&Login&Register*******************************/
+
+
+/* Profile container */
+.profile-margin {
+  margin: 20px 0;
 }
 
-/* On small screens, set height to 'auto' for sidenav and grid */
-@media screen and (max-width: 767px) {
-  .sidenav {
-    height: auto;
-    padding: 15px;
-  }
-  .row.content {height:auto;}
+/* Profile sidebar */
+.profile-sidebar {
+  padding: 20px 0 10px 0;
+  background: #fff;
 }
+
+.profile-userpic img {
+  float: none;
+  margin: 0 auto;
+  width: 50%;
+  height: 50%;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+}
+
+.profile-usertitle {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profile-usertitle-name {
+  color: #5a7391;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.profile-usertitle-job {
+  text-transform: uppercase;
+  color: #5b9bd1;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.profile-userbuttons {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.profile-userbuttons .btn {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 15px;
+  margin-right: 5px;
+}
+
+.profile-userbuttons .btn:last-child {
+  margin-right: 0px;
+}
+    
+.profile-usermenu {
+  margin-top: 30px;
+}
+
+.profile-usermenu ul {
+  display: block;
+
+}
+
+.profile-usermenu ul li {
+  border-bottom: 1px solid #f0f4f7;
+
+}
+
+.profile-usermenu ul li:last-child {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li {
+  color: #93a3b5;
+  font-size: 36px;
+  font-weight: 400;
+}
+
+.profile-usermenu ul li a i {
+  margin-right: 8px;
+  font-size: 22px;
+}
+
+.profile-usermenu ul li:hover {
+  background-color: #fafcfd;
+  color: #5b9bd1;
+}
+
+.profile-usermenu ul li.active {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li.active {
+  color: #5b9bd1;
+  background-color: #f6f9fb;
+  border-left: 2px solid #5b9bd1;
+  margin-left: -2px;
+}
+
+/* Profile Content */
+.profile-content {
+  padding: 20px;
+  background: #fff;
+  min-height: 460px;
+}
+
+
+/********************************Home Page*******************************/
+
+
+.features-blue .container {
+  padding-top: 100px;
+}
+
+
+@media (max-width:767px) {
+  .features-blue {
+    padding-bottom:10px;
+  }
+}
+
+
+.features-blue {
+  color:#fff;
+  background:linear-gradient(135deg, #172a74, #21a9af);
+  background-color:#184e8e;
+  padding-bottom:30px;
+}
+
+
+.features-blue p {
+  color: rgba(255,255,255,0.6);
+}
+
+.features-blue h2 {
+  font-weight:bold;
+  margin-bottom:40px;
+  padding-top:40px;
+  color:inherit;
+}
+
+@media (max-width:767px) {
+  .features-blue h2 {
+    margin-bottom:25px;
+    padding-top:25px;
+    font-size:24px;
+  }
+}
+
+.features-blue .intro {
+  font-size:16px;
+  max-width:1000px;
+  margin:0 auto 60px;
+}
+
+@media (max-width:767px) {
+  .features-blue .intro {
+    margin-bottom:40px;
+  }
+}
+
+.features-blue .item {
+  min-height:100px;
+  padding-left:80px;
+  margin-bottom:40px;
+}
+
+@media (max-width:100%) {
+  .features-blue .item {
+    min-height:0;
+  }
+}
+
+.features-blue .item .name {
+  font-size:20px;
+  font-weight:bold;
+  margin-top:0;
+  margin-bottom:20px;
+  color:inherit;
+}
+
+.features-blue .item .description {
+  font-size:15px;
+  margin-bottom:0;
+}
+
+.features-blue .item .icon {
+  font-size:40px;
+  color:#ffcc1e;
+  float:left;
+  margin-left:-65px;
+}
+

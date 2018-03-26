@@ -1,47 +1,75 @@
-<!DOCTYPE html>
+<!doctype html>
 {% load staticfiles %}
-<html>
+<html lang="en">
   <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Font awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
+
     <title>{% block title %}Base{% endblock %}</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
   </head>
-  <body>
-    <nav class="navbar navbar-default navbar-static-top">
+  <body class="logged-out-view">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-primary">
       <div class="container">
-        <a class="navbar-brand" href="{% url 'home' %}">MSA</a>
-        <ul class="nav navbar-nav navbar-right">
+      <a class="navbar-brand" href="{% url 'home' %}">
 
-          {# Django Home Link / Admin Link / Register Link#}
+        <img src="{% static 'img/whale.svg' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+        Blue Practice Arena
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+     </button>
 
-          {% if user.is_authenticated %}
-          <li><a class="navbar-link" href="#">{{user}}</a></li>
-          {% endif %}
-          <li><a class="navbar-link" href="{% url 'problems:archive' %}">Problem Archive</a></li>
-          <li><a class="navbar-link" href="{% url 'sheets:home' %}">Sheets</a></li>
-          <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
 
-          {# Some logic on what to display for last item#}
-          {% if user.is_authenticated %}
-            <li><a class="navbar-link" href="{% url 'profiles:logout' %}">Logout</a></li>
-          {% else %}
-            <li><a class="navbar-link" href="{% url 'profiles:register' %}">Register</a></li>
-            <li><a class="navbar-link" href="{% url 'profiles:login' %}">Login</a></li>
-          {% endif %}
+    <!--{# Django Home Link / Admin Link / Register Link #}-->
 
-        </ul>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="navbar-nav">
+              {% if user.is_authenticated %}
+                  <a class="nav-item nav-link active" href="{% url 'home' %}"><i class="fas fa-user-circle"></i> {{user}}<span class="sr-only">(current)</span></a>
+              {% endif %}
+
+              <a class="nav-item nav-link" href="{% url 'problems:archive' %}"><i class="fas fa-book"></i> Problem Archive</a>
+
+              <a class="nav-item nav-link" href="{% url 'sheets:home' %}"> <i class="fa fa-align-justify nav-icon"></i></i> Sheets</a>
+
+              <a class="nav-item nav-link" href="{% url 'admin:index' %}"><i class="fas fa-chess-king"></i> Admin</a>
+
+              {# Some logic on what to display for last item #}
+              {% if user.is_authenticated %}
+              <a class="nav-item nav-link" href="{% url 'profiles:logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+              {% else %}
+              <a class="nav-item nav-link" href="{% url 'profiles:register' %}"><i class="fas fa-user-plus"></i> Register</a>
+              <a class="nav-item nav-link" href="{% url 'profiles:login' %}"><i class="fas fa-user-circle"></i> Login</a>
+              {% endif %}
+
+        </div>
       </div>
-    </nav>
-    <div class="container">
-
-    {% block body_block %}
-
-    {% endblock %}
-
     </div>
+  </nav>
 
+  <!--Main Container-->
+    <div class="container">
+      {% block body_block %}
+
+      {% endblock %}
+
+    </div><!--Main container end-->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="js/script"></script>
 
   </body>
 </html>

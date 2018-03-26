@@ -1,16 +1,35 @@
 {% extends "base.html" %}
-{% load extra_tags %}
+{% load problem_tags %}
 {% block title %}Problems Archive{% endblock %}
 
 {% block body_block %}
-  <h1>Problem Archive</h1>
-  <ol>
+<div class="row profile-margin">
+  <div class="col-md-12">
+    <ul class="list-group">
+
+
+      <button type="button" class="list-group-item list-group-item-action active">
+        Problem Archive
+      </button>
+
       {% for problem in all_problems %}
-      <h3><li><a href="{% url 'problems:problem_detail' slug=problem.slug %}">{{ problem }}</a>
-        {% if user.is_authenticated %}{% is_solved_by_user problem user as result %}
-        {% if result %}Solved{% endif %}{% endif %}</li></h3>
+      <a href="{% url 'problems:problem_detail' slug=problem.slug %}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+        <li>{{ problem }}</li>
+
+        {# SOLVED MARK PILL #}
+        {% if user.is_authenticated %}
+          {% is_solved_by_user problem user as result %}
+          {% if result %}
+            <span class="badge badge-success badge-pill">Solved</span>
+          {% endif %}
+        {% endif %}
+      </a>
       {% empty %}
       <h3>No problems added yet</h3>
       {% endfor %}
-  </ol>
+
+
+    </ul>
+  </div>
+</div>
 {% endblock %}

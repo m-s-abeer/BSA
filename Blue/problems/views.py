@@ -18,4 +18,5 @@ class ProblemDetail(generic.DetailView):
         context = super().get_context_data(*args, **kwargs)
         # slower: context["solved_status"] = self.request.user.is_authenticated and Solve.objects.filter(solver=self.request.user, problem=context["object"]).exists()
         context["solve_status"] = self.request.user.is_authenticated and context["object"].solved.filter(solver=self.request.user).exists()
+        context['current_url'] = self.request.get_full_path()
         return context

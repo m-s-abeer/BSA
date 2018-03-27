@@ -11,11 +11,13 @@
 		<h4>
 			<b class="text-warning">Solve Status:</b>
 			{% if solve_status %}
-					Solved
+					<span class="status solved">Solved</span>
 			{% else %}
-					Pending.
-					Solved yet?
-					<a class="btn btn-success" href="solve" class="white-text">Yes</a></button>
+					<span class="status pending">Pending. Solved yet?</span>
+					<a class="btn btn-success" id="problem_solved_btn" data-name="{{ problem }}" href="solve"
+                       data-current=
+                            "{{ current_url }}"
+                       class="white-text">Yes</a></button>
 			{% endif %}</h4>
 			{% else %}
 				</h4><b>Solve Status:</b> You are not logged in!</h4>

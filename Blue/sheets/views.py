@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.views import generic
+from django.db.models import Q
 from django.views.generic import TemplateView
 from .models import Sheet, SheetMember
 from problems.models import Problem
+from announcement.models import Announcement
 
 # Create your views here.
 class ListSheets(generic.ListView):
@@ -16,11 +18,12 @@ class SheetView(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['this_sheet'] = get_object_or_404(Sheet, slug=kwargs['slug'])
+        this_sheet=context['this_sheet'] = get_object_or_404(Sheet, slug=kwargs['slug'])
         lim = context['this_sheet'].problems_added
         context['sheet_prob'] = Problem.objects.order_by("created_at")[0:lim]
         context['sheet_status'] = self.request.user.is_authenticated and SheetMember.objects.filter(member=self.request.user).exists()
         context['member_list'] = context['this_sheet'].memberships.order_by("-solve_count")
+        context['announcements'] = Announcement.objects.filter( Q(sheets=this_sheet) | Q(sheets=None) )
         return context
 
 class JoinSheetView(TemplateView):
@@ -32,12 +35,12 @@ class JoinSheetView(TemplateView):
         context['member_status'] = self.request.user.is_authenticated and context['this_sheet'].memberships.filter(member=self.request.user).exists()
         cnt = sheet_solve_count(context['this_sheet'], self.request.user)
         context['solve_count'] = cnt
-        context['eligible'] = cnt >= context['this_sheet'].problems_added
+        context['eligible'] = cnt >= context['this_sheet'].cut_off
         return context
 
     def post(self, request, *args, **kwargs):
         sheet = get_object_or_404(Sheet, slug=kwargs['slug'])
-        lim = sheet.problems_added
+        lim = sheet.cut_off
         cnt = sheet_solve_count(sheet, self.request.user)
         if cnt >= lim :
             SheetMember.objects.create(sheet=sheet, member=self.request.user, solve_count=cnt)

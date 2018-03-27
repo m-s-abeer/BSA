@@ -9,12 +9,16 @@
 
 		<h1>{{this_sheet}}
 			{% if not sheet_status %}
-			<br><a href="{% url 'sheets:join_sheet' slug=this_sheet.slug %}" class="btn btn-success" >Join this sheet</a>
+				{% if user.is_authenticated %}<a href="{% url 'sheets:join_sheet' slug=this_sheet.slug %}" class="btn btn-success" >Join this sheet</a>{% endif %}
 			{% endif %}
 		</h1>
+		{% for announcement in announcements %}
+				{{ announcement.content }}
 
+				<br>
+		{% endfor %}
 
-		<h2>Total problems added: {{this_sheet.problem_count}}</h2>
+		<h2>Total problems added: {{this_sheet.problems_added}}</h2>
 		<h3>Current cut off: {{this_sheet.cut_off}}</h3>
 		<br>
 

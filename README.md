@@ -1,13 +1,14 @@
 # Blue Sheet Automation Project
+## Installation instructions
 
-# first of all, I would suggest you to setup a virtual environment and then do the below instructions:-
-# to setup virtual environment you can use "Conda"(Documentation="https://conda.io/docs/user-guide/tasks/manage-environments.html").
+### First of all, I suggest you to setup(optional) a virtual environment(to setup virtual environment you can use "Conda", Documentation="https://conda.io/docs/user-guide/tasks/manage-environments.html") and after activating your environment follow the below instructions:-
 
-1.  install python 3.6.4 (https://www.python.org/downloads/release/python-364/)
+
+1.  install python 3.6.4 (through the environment or https://www.python.org/downloads/release/python-364/ if you haven't setup a custom environment)
 2.  install django 2.0.2 (write 'pip install Django==2.0.2' in cmd)
 3.  install django-bootstrap4 (write 'pip install django-bootstrap4' in cmd)
 4.  install postgreSQL 10.x (https://www.enterprisedb.com/downloads/postgres-postgresql-downloads)
-5.  install psycopg2 (write 'pip install psycopg2' in command-prompt)
+5.  install psycopg2 (write 'pip install psycopg2' or 'pip install psycopg2-binary' if the first one doesn't work in cmd)
 6.  change directory to the project folder (i.e. Blue/)
 7.  create database (open pgmyAdmin 4 and create a new database with any name)
 8.  connect database (open "Blue/Blue/settings.py" and change the 'Databases:name' and 'Databases:password' fields accordingly)

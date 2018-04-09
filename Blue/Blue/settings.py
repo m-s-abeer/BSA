@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'problems',
     'solve_activities',
     'bootstrap4',
+    'announcement',
 ]
 
 MIDDLEWARE = [
@@ -141,5 +142,7 @@ STATICFILES_DIRS = [
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+LOGIN_URL = '/profiles/login'
 
 django_heroku.settings(locals())

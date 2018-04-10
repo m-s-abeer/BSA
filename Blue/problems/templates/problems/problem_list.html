@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% load problem_tags %}
+
 {% block title %}Problems Archive{% endblock %}
 
 {% block body_block %}
+
 <div class="row profile-margin">
   <div class="col-md-12">
     <ul class="list-group">
@@ -11,6 +13,8 @@
       <button type="button" class="list-group-item list-group-item-action active">
         Problem Archive
       </button>
+
+     
 
       {% for problem in all_problems %}
       <a href="{% url 'problems:problem_detail' slug=problem.slug %}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">

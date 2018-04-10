@@ -19,4 +19,5 @@ class ProblemDetail(generic.DetailView):
         # slower: context["solved_status"] = self.request.user.is_authenticated and Solve.objects.filter(solver=self.request.user, problem=context["object"]).exists()
         context["solve_status"] = self.request.user.is_authenticated and context["object"].solved.filter(solver=self.request.user).exists()
         context['current_url'] = self.request.get_full_path()
+        context['active_tab'] = 'problems'
         return context

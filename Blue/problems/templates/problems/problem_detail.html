@@ -5,11 +5,10 @@
 {% block body_block %}
 <div class="row profile-margin profile-content">
 	<div class="col-md-12 ">
-
 		<h1 class="text-primary">{{problem}}</h1>
 		{% if user.is_authenticated %}
 		<h4>
-			<b class="text-warning">Solve Status:</b>
+			<b class="text-success">Solve Status:</b>
 			{% if solve_status %}
 					<span class="status solved">Solved</span>
 			{% else %}

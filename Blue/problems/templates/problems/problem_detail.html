@@ -5,17 +5,18 @@
 {% block body_block %}
 <div class="row profile-margin profile-content">
 	<div class="col-md-12 ">
-
 		<h1 class="text-primary">{{problem}}</h1>
 		{% if user.is_authenticated %}
 		<h4>
-			<b class="text-warning">Solve Status:</b>
+			<b class="text-success">Solve Status:</b>
 			{% if solve_status %}
-					Solved
+					<span class="status solved">Solved</span>
 			{% else %}
-					Pending.
-					Solved yet?
-					<a class="btn btn-success" href="solve" class="white-text">Yes</a></button>
+					<span class="status pending">Pending. Solved yet?</span>
+					<a class="btn btn-success" id="problem_solved_btn" data-name="{{ problem }}" href="solve"
+                       data-current=
+                            "{{ current_url }}"
+                       class="white-text">Yes</a></button>
 			{% endif %}</h4>
 			{% else %}
 				</h4><b>Solve Status:</b> You are not logged in!</h4>
@@ -37,7 +38,7 @@
 				<b>Note:</b> {% if problem.note %}{{problem.note}}{% else %}No notes added yet{% endif %}
 			</li>
 			<li><i class="fas fa-cut"></i>
-				<b>Problem Link:</b> <a href="{{problem.link}}">{{problem.oj_name}} {{problem.prob_id}}</a>
+				<b>Problem Link:</b> <a href="{{problem.link}}" target="_blank">{{problem.oj_name}} {{problem.prob_id}}</a>
 			</li>
 			<li><i class="fas fa-chart-bar"></i>
 				<b>Solved by:</b> {{problem.solved.count}} users<br>

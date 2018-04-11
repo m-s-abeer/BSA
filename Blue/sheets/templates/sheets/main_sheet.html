@@ -2,64 +2,96 @@
 {% load sheet_tags %}
 {% block title %}{{this_sheet}}{% endblock%}
 
+
 {% block body_block %}
 <div class="row profile-margin profile-content">
-	<div class="col-md-12 ">
+	<div class="col-md-12 text-center ">
 
 
-		<h1>{{this_sheet}}
+		<h1 class="text-primary">{{this_sheet}}
 			{% if not sheet_status %}
-			<br><a href="https://youtu.be/9bZkp7q19f0?t=9" class="btn btn-success" >Join this sheet</a>
+				{% if user.is_authenticated %}<a href="{% url 'sheets:join_sheet' slug=this_sheet.slug %}"
+                                                 id="join_sheet_btn"
+                                                 data-sheet-name="{{ this_sheet }}"
+                                                 data-current="{{ current_url }}"
+                                                 class="btn btn-success" >Join this sheet</a>{% endif %}
 			{% endif %}
 		</h1>
 
+        {% for announcement in announcements %}
+            {{ announcement.content }}
 
-		<h2>Total problems added: {{this_sheet.problem_count}}</h2>
+            <br>
+        {% endfor %}
+
+
+		<h2>Total problems added: {{this_sheet.problems_added}}</h2>
 		<h3>Current cut off: {{this_sheet.cut_off}}</h3>
+		<h3>Deadline: 22/04/18</h3>
 		<br>
 
-		<table style="width:100%" border="1">
+<div id="table-scroll" class="table-scroll">
+	<div class="table-wrap">
+		<table class="table table-bordered table-striped table-hover main-table sheet"  >
 			{# Printing usernames #}
-			<tr>
-				<th>Users</th>
-	      <th></th>
-				{% for member in member_list %}
-				<th>{{member.user.username}}</th>
+			<tr class="thead-primary">
+				<th scope="col" class="fixed-side thead-primary" >Users <i class="fas fa-angle-right"></i></th>
+		     	<th scope="col" class="fixed-side thead-primary">
+		      	<i class="fas fa-cogs"></i>
+		     	</th>
+				{% for sheet_member in member_list %}
+				<td scope="col">{{sheet_member.member}}</td>
 				{% endfor %}
 			</tr>
+
 			{# Printing Solve Counts #}
-			<tr>
-				<th>Problems</th>
-	      <th>Solve Count</th>
+			<tr class="thead-dark">
+				<th scope="col" class="fixed-side">Problems <i class="fas fa-angle-right"></i></th>
+	      		<th scope="col" class="fixed-side">Solved</th>
 				{% for member in member_list %}
-				<td>{{member.solve_count}}</td>
+				<td scope="col">{{member.solve_count }}</td>
 				{% endfor %}
-				{# incomplete #}
-				{# <tr> #}
-					{# <th>Solve percentage</th> #}
-					{# {% for member in member_list %} #}
-					{# <td>{{member.solve_count}}</td> #}
-					{# {% endfor %} #}
-				{# </tr> #}
 
 				{# Printing problems on first column and solves of sheetmembers on the next columns #}
 			</tr>
+
+			{# Printing solve percentage #}
+			<tr class="thead-dark">
+				<th scope="col" class="fixed-side"s >Percentage <i class="fas fa-angle-right"></i></th>
+	      		<th scope="col">%</th>
+				{% for member in member_list %}
+				{% solve_percentage solve_count=member.solve_count problems_added=this_sheet.problems_added as per %}
+				<td scope="col">{{per}}</td>
+				{% endfor %}
+			</tr>
+
 			{% for prob in sheet_prob %}
 			<tr>
 				{# Problem with link #}
-				<th><a href="{% url 'problems:problem_detail' slug=prob.slug %}">{{prob}}</a></th>
+				<th scope="col" class="fixed-side" id="problem-col" ><a href="{% url 'problems:problem_detail' slug=prob.slug %}">{{prob}}</a></th>
 				{% count_problem_solves problem=prob members=member_list as problem_solved_count %}
-				<th>{{problem_solved_count}}</th>
+				<th scope="col" class="fixed-side">{{problem_solved_count}}</th>
 				{# Solve for each member(ordered by descending solve_count) #}
-				{% for member in member_list %}
-				{% is_solved_by_user prob member.user as result %}
-				<td>{% if result %}OK{% endif %}</td>
+
+				{% for sheet_member in member_list %}
+				{% is_solved_by_user prob sheet_member.member as result %}
+				<td>
+					{% if result %}
+							<span class="checkmark">
+				    			<div class="checkmark_circle"></div>
+				    			<div class="checkmark_stem"></div>
+				    			<div class="checkmark_kick"></div>
+							</span>	
+					{% endif %}
+				</td>
 				{% endfor %}
 			</tr>
 			{% endfor %}
 		</table>
-
+		
 
 	</div>
+</div>
+
 </div>
 {% endblock %}

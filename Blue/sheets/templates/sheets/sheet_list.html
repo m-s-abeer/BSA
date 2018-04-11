@@ -6,7 +6,7 @@
 
 <div class="row profile-margin">
 	<div class="col-md-12">
-		<ul class="list-group">
+		<ul class="list-group list-group-hover list-group-striped">
 
 
 
@@ -23,7 +23,7 @@
 			{% for sheet in sheets_list %}
 
 			<!--=Sheets list ITEM  START-->
-			<a href="{% url 'sheets:activity' slug=sheet.slug %}" class="list-group-item list-group-item-action flex-column align-items-start">
+			<a href="{% url 'sheets:main_sheet' slug=sheet.slug %}" class="list-group-item list-group-item-action flex-column align-items-start">
 
 
 				<div class="d-flex w-100 justify-content-between">
@@ -31,7 +31,7 @@
 				</div>
 
 
-				<p class="mb-1">Total problems added: {{sheet.problem_count}}</p>
+				<p class="mb-1">Total problems added: {{sheet.problems_added}}</p>
 				<p class="mb-1">Cut-off: {{sheet.cut_off}}</p>
 				<p class="mb-1">Members: {{sheet.memberships.count}}</p>
 
@@ -39,7 +39,7 @@
 				{# PRINTING MEMBERS IN SHEET #}
 				<small>Members:</small>
 				{% for member in sheet.members.all %}
-				<small class="text-muted">{{member}}</small>
+				<small class="text-muted">{{member}}</small>{% if not forloop.last %}, {% endif %}
         {% empty %}
         <small class="text-muted">No members added yet!</small>
 				{% endfor %}

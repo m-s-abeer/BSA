@@ -25,4 +25,7 @@ urlpatterns = [
     path('problems/', include('problems.urls', namespace='problems')),
     path('solve_activities/', include('solve_activities.urls', namespace='solve_activities')),
     path('admin/', admin.site.urls),
+
+
+    path('announcement/', include("announcement.urls", namespace="announcement"), name="announcement"),
 ]

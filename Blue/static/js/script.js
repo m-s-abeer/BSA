@@ -10,11 +10,19 @@ jQuery(document).ready(function ($) {
     JoinBtnTitle = JoinBtn.data("sheet-name");
 
     JoinBtn.confirm({
-        title: 'Confirm!',
-        content: '<h3> Do you really want to join <b>"'+JoinBtnTitle+'"</b>?</h3>\n' +
+        title: 'Are you sure?',
+        icon: 'fas fa-clipboard-check',
+        escapeKey: true,
+        columnClass: 'col-md-6',
+        type: 'blue',
+
+        content: '<h3> Do you really want to join? <b><br>"'+JoinBtnTitle+'"</b></h3>\n' +
         '    <h3> You cannot leave the sheet after joining until you are removed automatically.</h3>',
         buttons: {
-            YES: function () {
+            YES: {
+                btnClass: 'btn-primary',
+                text: 'Confirm',
+                action: function () {
 
                 JoinBtn.fadeOut();
 
@@ -28,7 +36,11 @@ jQuery(document).ready(function ($) {
 
                         if (jsonResponse.status == 1) {
                             $.alert({
-                                title: 'Success!',
+                                icon: 'fas fa-check-square',
+                                title: '<h4>Success!<h4>',
+                                columnClass: 'col-md-12',
+                                escapeKey: true,
+                                type: 'green',
                                 content: jsonResponse.message,
                             });
 
@@ -40,7 +52,7 @@ jQuery(document).ready(function ($) {
                         }
                     }
                 });
-            },
+            }},
             NO: function () {
 
             }
@@ -52,12 +64,19 @@ jQuery(document).ready(function ($) {
     ProblemTitle = ProblemSolvedBtn.data("name");
 
     ProblemSolvedBtn.confirm({
+        icon: 'fas fa-clipboard-check',
+        escapeKey: true,
+        columnClass: 'col-md-10',
         title: 'Confirm!',
-        content: '<h1> Are you sure you\'ve solved <b>"'+ProblemTitle+'"</b>?</h1><h3> You cannot remove this problem' +
+        type: 'blue',
+        content: '<h1> Do you confirm that you\'ve solved <b><br>"'+ProblemTitle+'"</b>?</h1><h3> You cannot remove this problem' +
         ' from' +
         ' your solve activities after confirmation.</h3>',
         buttons: {
-            YES: function () {
+            YES: {
+                btnClass: 'btn-primary',
+                text: 'Confirm',
+                action: function () {
 
                 ProblemSolvedBtn.fadeOut();
 
@@ -68,19 +87,36 @@ jQuery(document).ready(function ($) {
                     contentType: "application/json",
                     success: function (res) {
                         $.alert({
-                            title: 'Solved!',
+                            icon: 'fas fa-clipboard-check',
+                            title: '<h4>Success!<h4>',
+                            columnClass: 'col-md-12',
+                            escapeKey: true,
+                            type: 'green',
                             content: res,
                         });
 
                         $(".status.pending").removeClass("pending").addClass("solved").text("Solved").hide().fadeIn();
                     }
                 });
-            },
+
+            }},
+
             NO: function () {
 
-            }
+            },
         }
     });
 
 
+});
+
+// requires jquery library
+jQuery(document).ready(function() {
+   jQuery(".main-table").clone(true).appendTo('#table-scroll').addClass('clone');   
+ });
+
+
+//Dragabble homepage box
+$(function() {
+    $( ".box" ).draggable();
 });

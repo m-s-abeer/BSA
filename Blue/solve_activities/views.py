@@ -36,7 +36,7 @@ class SolveConfirmation(LoginRequiredMixin, generic.TemplateView):
             if isPos:
                 sheet_mem.solve_count = sheet_mem.solve_count + 1
                 sheet_mem.save()
-        success_msg = "<h1><b>Congratulations! You've solved \"" + str(problem) + "\".</b></h1>"
+        success_msg = "<h3><b>Congratulations! You've solved " + str(problem) + ".</b></h3>"
         return HttpResponse(success_msg)
 
 
@@ -51,6 +51,6 @@ def ProblemSolvedXHR(request, slug):
         if isPos:
             sheet_mem.solve_count = sheet_mem.solve_count + 1
             sheet_mem.save()
-    success_msg = "<h1><b>Congratulations! You've solved \"" + str(problem) + "\".</b></h1>"
+    success_msg = "<h1><b>You've solved " + str(problem) + ".</b></h1>"
 
     return HttpResponse(json.dumps(success_msg))

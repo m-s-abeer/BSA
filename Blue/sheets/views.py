@@ -29,6 +29,7 @@ class SheetView(TemplateView):
         context['member_list'] = context['this_sheet'].memberships.order_by("-solve_count")
         context['announcements'] = Announcement.objects.filter(Q(sheets=this_sheet) | Q(sheets=None))
         context['current_url'] = self.request.get_full_path()
+        context['active_tab'] = 'sheets'
         return context
 
 

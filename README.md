@@ -17,3 +17,5 @@
 11. createsuperuser (write 'python manage.py createsuperuser' in cmd and follow the instructions)
 12. if everything goes fine, runserver (write 'python manage.py runserver')
 13. open a web browser and hop on to the url (http://127.0.0.1:8000/)
+
+**You can use either sqlite3 or postgreSQL. Both of the connections are available. So, you may skip over 4 and 5.**

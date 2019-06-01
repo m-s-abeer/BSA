@@ -1,0 +1,118 @@
+[
+	{
+		"oj_name":"Timus",
+		"prob_id":"1001",
+		"name": "A+B Problem",
+		"category":"Beginer",
+		"link": "http://acm.timus.ru/problem.aspx?space=1&num=1000"
+
+
+	},
+	{
+		"oj_name":"Timus",
+		"prob_id":"1002",
+		"name":"[Timus1264] Workdays",
+		"category":"Beginer",
+		"link": "http://acm.timus.ru/problem.aspx?space=1&num=1264"
+
+	},
+	{
+		"oj_name":"Timus",
+		"prob_id":"1003",
+		"name":"Enya",
+		"category":"Beginer",
+		"link": "http://acm.timus.ru/problem.aspx?space=1&num=1293"
+
+	},
+	{
+		"oj_name":"Timus",
+		"prob_id":"1004",
+		"name":"Two Gangsters",
+		"category":"Beginer",
+		"link": "http://acm.timus.ru/problem.aspx?space=1&num=1409"
+
+	},
+	{
+		"oj_name":"Timus",
+		"prob_id":"1005",
+		"name":"Sum",
+		"category":"Beginer",
+		"link": "http://acm.timus.ru/problem.aspx?num=1068"
+
+	},
+	{
+		"oj_name":"Timus",
+		"prob_id":"1006",
+		"name":"Factorials!!!",
+		"category":"Beginer",
+		"link": "http://acm.timus.ru/problem.aspx?num=1083"
+
+	},
+	{
+		"oj_name":"Timus",
+		"prob_id":"1007",
+		"name":"Cryptography",
+		"category":"Beginer",
+		"link": "http://acm.timus.ru/problem.aspx?num=1086"
+
+	},
+	{
+		"oj_name":"Timus",
+		"prob_id":"1008",
+		"name":"1,10,100,1000...",
+		"category":"Beginer",
+		"link": "http://acm.timus.ru/problem.aspx?num=1209"
+	},
+	{
+		"oj_name":"Timus",
+		"prob_id":"1009",
+		"name":"Opposite Task",
+		"category":"Beginer",
+		"link": "http://acm.timus.ru/problem.aspx?num=1209"
+	},
+	{
+		"oj_name":"Timus",
+		"prob_id":"1010",
+		"name":"Fibsieve's Fantabulous Birthday",
+		"category":"Beginer",
+		"link": "http://acm.timus.ru/problem.aspx?num=1209"
+	},
+	{
+		"oj_name":"Timus",
+		"prob_id":"1011",
+		"name":"Knights in Chessboard",
+		"category":"Beginer",
+		"link": "http://acm.timus.ru/problem.aspx?num=1209"
+	},
+	{
+		"oj_name":"Timus",
+		"prob_id":"1012",
+		"name":"[LOJ15] Brush (I)",
+		"category":"Beginer",
+		"link": "http://acm.timus.ru/problem.aspx?num=1209"
+	},
+	{
+		"oj_name":"Timus",
+		"prob_id":"1013",
+		"name":"Circle in Square",
+		"category":"Beginer",
+		"link": "http://acm.timus.ru/problem.aspx?num=1209"
+	},
+	{
+		"oj_name":"Timus",
+		"prob_id":"1014",
+		"name":"Higher Math",
+		"category":"Beginer",
+		"link": "http://acm.timus.ru/problem.aspx?num=1209"
+	},
+	{
+		"oj_name":"Timus",
+		"prob_id":"1015",
+		"name":"Lift",
+		"category":"Beginer",
+		"link": "http://acm.timus.ru/problem.aspx?num=1209"
+	}
+]
+
+
+

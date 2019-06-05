@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from .models import Announcement
 from .forms import AnnouncementForm
 
@@ -28,3 +28,11 @@ class AddAnnouncement(TemplateView):
             return HttpResponseRedirect(reverse('announcement:add_announcement'))
         else:
             return render(request, self.template_name, {'form': form})
+
+class AnnouncementList(ListView):
+    model = Announcement
+    context_object_name = 'all_announcement'
+    template_name = 'announcement/announcement_list.html'
+    paginate_by = 10
+
+

@@ -5,6 +5,7 @@ from . import views
 
 app_name = 'announcement'
 urlpatterns = [
-    path('', login_required(views.AddAnnouncement.as_view(template_name="announcement/add.html")),
-         name='add_announcement')
+    path('add/', login_required(views.AddAnnouncement.as_view(template_name="announcement/add.html")),name='add_announcement'),
+    path('all/', views.AnnouncementList.as_view(), name='all_announcement')
+
 ]

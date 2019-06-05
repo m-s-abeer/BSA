@@ -14,7 +14,7 @@ class Announcement(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now, blank=True)
     updated_at = models.DateTimeField(default=timezone.now, blank=True)
-    sheets = models.OneToOneField(Sheet, blank=True, null=True, on_delete=models.CASCADE)
+    sheets = models.ForeignKey(Sheet, blank=True, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

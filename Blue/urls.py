@@ -30,6 +30,10 @@ urlpatterns = [
 
 
     path('announcement/', include("announcement.urls", namespace="announcement"), name="announcement"),
+    path('todos/', include("todos.urls", namespace="todos"), name="todos"),
+    path('badges/', include("badges.urls", namespace="badges"), name="badges"),
+
+
 ]
 
 if settings.DEBUG:

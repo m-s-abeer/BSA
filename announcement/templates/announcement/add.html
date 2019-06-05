@@ -1,22 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+
+
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load crispy_forms_tags %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body_block %}
+
+  <div class="login-page">
+
+{% if request.user.is_superuser %}
 
 {% if messages %}
     {% for message in messages %}
         <alert class="alert alert-{{ message.tags }}">{{ message }}</alert>
-    {% endfor %}
+	    {% endfor %}
+	{% endif %}
+
+ 
+	<form method="POST" action="">
+	    {% csrf_token %}
+	    {{ form|crispy }}
+	    <input type="submit" value="Save">
+	</form>
+
+ 
+  </div>
+{% else %}
+
+<h1>Only Superusers can add announcements</h1>
+
 {% endif %}
 
 
-<form method="POST" action="">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Save">
-</form>
-</body>
-</html>
+{% endblock %}
+
+
+

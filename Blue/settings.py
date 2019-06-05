@@ -44,6 +44,10 @@ INSTALLED_APPS = [
     'solve_activities',
     'bootstrap4',
     'announcement',
+    'todos',
+    'crispy_forms',
+    'badges',
+
 ]
 
 MIDDLEWARE = [
@@ -151,3 +155,5 @@ LOGIN_URL = '/profiles/profile'
 
 
 django_heroku.settings(locals())
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

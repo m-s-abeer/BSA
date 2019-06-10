@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Badge(models.Model):
+    name = models.CharField(max_length=200)
     title = models.CharField(max_length=200)
     body = models.CharField(max_length=2000)
     image = models.ImageField(default='badges_pics/default.jpg', upload_to='badges_pics')
